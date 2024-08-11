@@ -29,7 +29,7 @@ function handleBoxClick(index) {
     document.getElementById(index).innerText = currentPlayer;
 
     if (checkWin()) {
-        document.querySelector(".message").innerText = `${currentPlayer === 'X' ? player1 : player2} wins!`;
+        document.querySelector(".message").innerText = `${currentPlayer === 'X' ? player1 : player2} congratulations you won!.`;
     } else if (gameState.every(cell => cell !== '')) {
         document.querySelector(".message").innerText = "It's a draw!";
     } else {
