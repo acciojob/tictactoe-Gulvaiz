@@ -4,8 +4,8 @@ let player1 = '';
 let player2 = '';
 
 function gameStart() {
-    player1 = document.querySelector("#player-1").value;
-    player2 = document.querySelector("#player-2").value;
+    player1 = document.querySelector("#player1").value;
+    player2 = document.querySelector("#player2").value;
 
     let playersName = document.querySelector(".players_name");
     let game = document.querySelector(".game");
