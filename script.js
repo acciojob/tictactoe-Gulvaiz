@@ -4,8 +4,8 @@ let player1 = '';
 let player2 = '';
 
 function gameStart() {
-    player1 = document.querySelector("#player1").value;
-    player2 = document.querySelector("#player2").value;
+    player1 = document.querySelector("#player1").value; // Changed id to player1
+    player2 = document.querySelector("#player2").value; // Changed id to player2
 
     let playersName = document.querySelector(".players_name");
     let game = document.querySelector(".game");
@@ -29,7 +29,7 @@ function handleBoxClick(index) {
     document.getElementById(index).innerText = currentPlayer;
 
     if (checkWin()) {
-        document.querySelector(".message").innerText = `${currentPlayer === 'X' ? player1 : player2} congratulations you won!.`;
+        document.querySelector(".message").innerText = `${currentPlayer === 'X' ? player1 : player2}, congratulations you won!`; // Updated message string
     } else if (gameState.every(cell => cell !== '')) {
         document.querySelector(".message").innerText = "It's a draw!";
     } else {

@@ -1,20 +1,16 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
 	<link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-
-<div class="container">
+    <div class="container">
         <h1>Tic Tac Toe</h1>
         <div class="players_name">
-            <label for="player-1">Player 1:</label>
-            <input type="text" id="player1" placeholder="Enter Player 1 name">
-            <label for="player-2">Player 2:</label>
-            <input type="text" id="player2" placeholder="Enter Player 2 name">
+            <label for="player1">Player 1:</label>
+            <input type="text" id="player1" placeholder="Enter Player 1 name"> <!-- Changed id to player1 -->
+            <label for="player2">Player 2:</label>
+            <input type="text" id="player2" placeholder="Enter Player 2 name"> <!-- Changed id to player2 -->
             <button type="submit" id="submit" onclick="gameStart()">Start Game</button>
         </div>
         <div class="game hide">
@@ -32,11 +28,6 @@
             </div>
         </div>
     </div>
-	
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
-
+    <script type="text/javascript" src="./script.js"></script> <!-- Corrected script tag placement -->
 </body>
-
 </html>
