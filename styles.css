@@ -1,1 +1,24 @@
-/*  your css code here. If applicable */
+.container {
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}
+
+.gameBoard {
+    display: grid;
+    grid-template-columns: repeat(3, 70px);
+    grid-template-rows: repeat(3, 70px);
+    margin: 0 auto;
+}
+
+.boxes {
+    background-color: palevioletred;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+}
