@@ -4,27 +4,29 @@
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+     <div class="container">
         <h1>Tic Tac Toe</h1>
-        <div class="players_name">
-            <label for="player1">Player 1:</label>
-            <input type="text" id="player1" placeholder="Enter Player 1 name"> <!-- Changed id to player1 -->
-            <label for="player2">Player 2:</label>
-            <input type="text" id="player2" placeholder="Enter Player 2 name"> <!-- Changed id to player2 -->
-            <button type="submit" id="submit" onclick="gameStart()">Start Game</button>
+        <div class="input-names">
+            <input type="text" id="player1" placeholder="Player 1 name">
+            <input type="text" id="player2" placeholder="Player 2 name">
+            <button id="submit">Submit</button>
         </div>
-        <div class="game hide">
-            <div class="message"></div>
-            <div class="gameBoard">
-                <div class="boxes" id="0"></div>
-                <div class="boxes" id="1"></div>
-                <div class="boxes" id="2"></div>
-                <div class="boxes" id="3"></div>
-                <div class="boxes" id="4"></div>
-                <div class="boxes" id="5"></div>
-                <div class="boxes" id="6"></div>
-                <div class="boxes" id="7"></div>
-                <div class="boxes" id="8"></div>
+        <div class="message"></div>
+        <div class="board">
+            <div class="row">
+                <div class="cell" id="1"></div>
+                <div class="cell" id="2"></div>
+                <div class="cell" id="3"></div>
+            </div>
+            <div class="row">
+                <div class="cell" id="4"></div>
+                <div class="cell" id="5"></div>
+                <div class="cell" id="6"></div>
+            </div>
+            <div class="row">
+                <div class="cell" id="7"></div>
+                <div class="cell" id="8"></div>
+                <div class="cell" id="9"></div>
             </div>
         </div>
     </div>

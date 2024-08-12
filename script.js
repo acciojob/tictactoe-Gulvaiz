@@ -1,57 +1,62 @@
-let currentPlayer = 'X';
-let gameState = ['', '', '', '', '', '', '', '', ''];
-let player1 = '';
-let player2 = '';
-
-function gameStart() {
-    player1 = document.querySelector("#player1").value; // Changed id to player1
-    player2 = document.querySelector("#player2").value; // Changed id to player2
-
-    let playersName = document.querySelector(".players_name");
-    let game = document.querySelector(".game");
-
-    playersName.classList.add("hide");
-    game.classList.remove("hide");
-
-    let message = document.querySelector(".message");
-    message.innerText = `${player1}, you're up`;
-
-    let boxes = document.querySelectorAll(".boxes");
-    boxes.forEach((box, index) => {
-        box.addEventListener("click", () => handleBoxClick(index));
-    });
-}
-
-function handleBoxClick(index) {
-    if (gameState[index] !== '') return;
-
-    gameState[index] = currentPlayer;
-    document.getElementById(index).innerText = currentPlayer;
-
-    if (checkWin()) {
-        document.querySelector(".message").innerText = `${currentPlayer === 'X' ? player1 : player2}, congratulations you won!`; // Updated message string
-    } else if (gameState.every(cell => cell !== '')) {
-        document.querySelector(".message").innerText = "It's a draw!";
-    } else {
-        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-        document.querySelector(".message").innerText = `${currentPlayer === 'X' ? player1 : player2}, you're up`;
-    }
-}
-
-function checkWin() {
-    const winPatterns = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6]
-    ];
-
-    return winPatterns.some(pattern => {
-        const [a, b, c] = pattern;
-        return gameState[a] && gameState[a] === gameState[b] && gameState[a] === gameState[c];
-    });
-}
+ 
+const submitButton = document.getElementById('submit');
+        const player1Input = document.getElementById('player1');
+        const player2Input = document.getElementById('player2');
+        const messageDiv = document.querySelector('.message');
+        const boardDiv = document.querySelector('.board');
+        const cells = document.querySelectorAll('.cell');
+ 
+        let playerA = '';
+        let playerB = '';
+        let currentPlayer = '';
+        let currentSymbol = 'x';
+        let gameActive = true;
+ 
+        submitButton.addEventListener('click', () => {
+            playerA = player1Input.value;
+            playerB = player2Input.value;
+ 
+            if (playerA && playerB) {
+                currentPlayer = playerA;
+                messageDiv.textContent = `${currentPlayer}, you're up`;
+                boardDiv.style.display = 'block';
+                document.querySelector('.input-names').style.display = 'none';
+            }
+        });
+ 
+        cells.forEach(cell => {
+            cell.addEventListener('click', () => {
+                if (gameActive && cell.textContent === '') {
+                    cell.textContent = currentSymbol;
+                    if (checkWin()) {
+                        messageDiv.textContent = `${currentPlayer} congratulations you won!`;
+                        gameActive = false;
+                    } else if (isDraw()) {
+                        messageDiv.textContent = `It's a draw!`;
+                        gameActive = false;
+                    } else {
+                        currentPlayer = currentPlayer === playerA ? playerB : playerA;
+                        currentSymbol = currentSymbol === 'x' ? 'o' : 'x';
+                        messageDiv.textContent = `${currentPlayer}, you're up`;
+                    }
+                }
+            });
+        });
+ 
+        function checkWin() {
+            const winPatterns = [
+                [1, 2, 3], [4, 5, 6], [7, 8, 9], // rows
+                [1, 4, 7], [2, 5, 8], [3, 6, 9], // columns
+                [1, 5, 9], [3, 5, 7]             // diagonals
+            ];
+ 
+            return winPatterns.some(pattern => {
+                return pattern.every(index => {
+                    return cells[index - 1].textContent === currentSymbol;
+                });
+            });
+        }
+ 
+        function isDraw() {
+            return Array.from(cells).every(cell => cell.textContent !== '');
+        }
